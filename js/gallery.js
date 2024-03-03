@@ -75,7 +75,7 @@ container.insertAdjacentHTML('beforeend', createMarkup(images));
 // навішуємо на список слухача подій
 container.addEventListener('click', handleModalOpen);
 
-// ств.callback для Eventa
+// ств.callback для для слухача події
 function handleModalOpen(event) {
   // перевіряємо куди виконався клік
   if (event.currentTarget === event.target) return;
