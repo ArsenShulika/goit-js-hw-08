@@ -72,25 +72,6 @@ const container = document.querySelector('.gallery');
 // в кінці цього списку вставляємо розмітку для нашої галереї на основі даних масиву images
 container.insertAdjacentHTML('beforeend', createMarkup(images));
 
-// навішуємо на список слухача подій
-container.addEventListener('click', handleModalOpen);
-
-// ств.callback для для слухача події
-function handleModalOpen(event) {
-  // перевіряємо куди виконався клік
-  if (event.currentTarget === event.target) return;
-  // відміняємо дефолтну дію бразузера
-  event.preventDefault();
-
-  // наша бібліотека
-  // розмітка картинки, яка буде знайдена і показана за відповідним датасетом
-  const instance = basicLightbox.create(`
-     <img src="${event.target.dataset.source}" width="1112" height="640">
-`);
-
-  instance.show();
-}
-
 // створюю копію масиву і перебираємо для ств. розмітки для нашої галереї на основі даних масиву images, деструктуризуємо властивості обєктів масиву
 function createMarkup(images) {
   return images
@@ -111,4 +92,23 @@ function createMarkup(images) {
 </li>`
     )
     .join('');
+}
+
+// навішуємо на список слухача подій
+container.addEventListener('click', handleModalOpen);
+
+// ств.callback для для слухача події
+function handleModalOpen(event) {
+  // перевіряємо куди виконався клік
+  if (event.currentTarget === event.target) return;
+  // відміняємо дефолтну дію бразузера
+  event.preventDefault();
+
+  // наша бібліотека;
+  // розмітка картинки, яка буде знайдена і показана за відповідним датасетом
+  const instance = basicLightbox.create(`
+     <img src="${event.target.dataset.source}" width="1112" height="640">
+`);
+
+  instance.show();
 }
